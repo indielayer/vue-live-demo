@@ -1,7 +1,17 @@
 {
   "name": "@indielayer/vue-live-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A component for live editing Vue single file components in the browser with real time preview.",
+  "keywords": [
+    "vue",
+    "live",
+    "code",
+    "preview",
+    "sfc",
+    "browser",
+    "editor",
+    "vue live editor"
+  ],
   "main": "dist/vue-live-demo.ssr.js",
   "browser": "dist/vue-live-demo.esm.js",
   "module": "dist/vue-live-demo.esm.js",
