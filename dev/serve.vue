@@ -10,7 +10,7 @@ export default Vue.extend({
   data() {
     return {
       code: '<template><div>hello</div></template>',
-      showCodeEditor: true
+      showCode: true
     }
   }
 });
@@ -19,7 +19,7 @@ export default Vue.extend({
 <template>
   <div id="app">
     <div class="wrapper">
-      <vue-live-demo :code="code" :show-code="showCodeEditor" />
+      <vue-live-demo :code="code" :show-code="showCode" />
     </div>
   </div>
 </template>
