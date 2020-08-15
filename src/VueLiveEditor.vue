@@ -134,7 +134,7 @@ button {
   font-size: 0.875rem;
   font-weight: bold;
   border-radius: 6px;
-  background-color: #1d2d36;
+  background-color: #282824;
   margin-left: 8px;
 }
 
@@ -151,6 +151,6 @@ button:active {
 }
 
 .btn-reset {
-  background-color: #101c23;
+  background-color: #4a4a45;
 }
 </style>

@@ -233,12 +233,12 @@ var __vue_staticRenderFns__ = [];
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-26a85974_0", {
+  inject("data-v-754b1f23_0", {
     source: ".CodeMirror{font-family:Consolas,Monaco,\"Andale Mono\",\"Ubuntu Mono\",monospace;font-size:.875rem;font-weight:700;border-radius:6px;background-color:#101c23;flex:1}.CodeMirror-gutters{background-color:#101c23}.CodeMirror-activeline-background{background-color:#050a0d}.CodeMirror-scroll{padding:8px}",
     map: undefined,
     media: undefined
-  }), inject("data-v-26a85974_1", {
-    source: ".editor[data-v-26a85974]{position:relative;border-radius:6px;width:100%;display:flex;flex-direction:column}.editor-actions[data-v-26a85974]{position:absolute;top:-34px;right:0}button[data-v-26a85974]{text-transform:none;color:#fff;cursor:pointer;border-style:none;height:44px;min-width:78px;padding:0 20px;transition:all .2s;font-size:.875rem;font-weight:700;border-radius:6px;background-color:#1d2d36;margin-left:8px}button[data-v-26a85974]:focus{outline:0}button[data-v-26a85974]:hover{transform:translateY(-14px)}button[data-v-26a85974]:active{transform:translateY(-24px)}.btn-reset[data-v-26a85974]{background-color:#101c23}",
+  }), inject("data-v-754b1f23_1", {
+    source: ".editor[data-v-754b1f23]{position:relative;border-radius:6px;width:100%;display:flex;flex-direction:column}.editor-actions[data-v-754b1f23]{position:absolute;top:-34px;right:0}button[data-v-754b1f23]{text-transform:none;color:#fff;cursor:pointer;border-style:none;height:44px;min-width:78px;padding:0 20px;transition:all .2s;font-size:.875rem;font-weight:700;border-radius:6px;background-color:#282824;margin-left:8px}button[data-v-754b1f23]:focus{outline:0}button[data-v-754b1f23]:hover{transform:translateY(-14px)}button[data-v-754b1f23]:active{transform:translateY(-24px)}.btn-reset[data-v-754b1f23]{background-color:#4a4a45}",
     map: undefined,
     media: undefined
   });
@@ -246,7 +246,7 @@ const __vue_inject_styles__ = function (inject) {
 /* scoped */
 
 
-const __vue_scope_id__ = "data-v-26a85974";
+const __vue_scope_id__ = "data-v-754b1f23";
 /* module identifier */
 
 const __vue_module_identifier__ = undefined;

@@ -1,5 +1,5 @@
 <a href="https://indielayer.com/">
-  <img src="https://indielayer.com/logo.png" alt="Indielayer" width="300" />
+  <img src="https://user-images.githubusercontent.com/3942799/90314498-25807a80-df0c-11ea-9e3a-b2b919bc9f10.png" alt="Indielayer" width="300" />
 </a>
 
 > Building digital products and empowering online companies
@@ -12,6 +12,8 @@
 [![npm](https://flat.badgen.net/npm/dt/@indielayer/vue-live-demo)](https://npmjs.com/package/@indielayer/vue-live-demo)
 
 Vue Live Demo used on Indielayer
+
+DEMO - [https://indielayer.github.io/vue-live-demo/](https://indielayer.github.io/vue-live-demo/)
 
 ## Getting Started
 
