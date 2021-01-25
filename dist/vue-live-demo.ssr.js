@@ -271,6 +271,13 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent({
         return v.toString(16);
       });
     },
+    scopeStyle: function scopeStyle(style) {
+      var _this = this;
+
+      return style.trim().replace(/(^|\})\s*([^{]+)/g, function (m, g1, g2) {
+        return g1 ? "".concat(g1, " .").concat(_this.scope, " ").concat(g2) : ".".concat(_this.scope, " ").concat(g2);
+      });
+    },
     handleError: function handleError(e) {
       this.error = e.message;
     },
@@ -284,8 +291,13 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent({
         };
 
         if (parsed.script) {
-          // eslint-disable-next-line no-eval
-          var componentScript = eval("(function() { ".concat(parsed.script.content.replace('export default', 'return'), " })")); // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
+          var content = parsed.script.content; // ignore all imports
+
+          content = content.replace(/^import.*$/m, ''); // ignore components property
+
+          content = content.replace(/components:[\s\S]*?\},/, ''); // eslint-disable-next-line no-eval
+
+          var componentScript = eval("(function() { ".concat(content.replace('export default', 'return'), " })")); // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
 
           var componentProperties = componentScript(); // check data() for return object
 
@@ -293,6 +305,21 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent({
           appComponent = Object.assign({
             template: parsed.template.content
           }, componentProperties);
+        }
+
+        if (parsed.styles && parsed.styles.length > 0) {
+          var styles = parsed.styles.map(function (s) {
+            return s.content;
+          }).join(' ');
+
+          if (!this.elStyle) {
+            var head = document.head || document.getElementsByTagName('head')[0];
+            this.elStyle = document.createElement('style');
+            this.elStyle.type = 'text/css';
+            head.appendChild(this.elStyle);
+          }
+
+          this.elStyle.innerHTML = this.scopeStyle(styles);
         }
 
         var _compile = browser.compile(appComponent.template),
@@ -339,9 +366,7 @@ var __vue_render__$1 = function __vue_render__() {
   }, [_vm._ssrNode(_vm._ssrEscape(_vm._s(_vm.error)))], 2) : _vm.previewedComponent ? _c(_vm.previewedComponent, {
     key: _vm.iteration,
     tag: "component",
-    attrs: {
-      "id": _vm.scope
-    }
+    class: _vm.scope
   }) : _vm._e();
 };
 
@@ -350,7 +375,7 @@ var __vue_staticRenderFns__$1 = [];
 
 var __vue_inject_styles__$1 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-2df59276_0", {
+  inject("data-v-5afa8318_0", {
     source: ".src-error-fOY1{font-family:Consolas,Monaco,\"Andale Mono\",\"Ubuntu Mono\",monospace;font-size:.875rem;color:red;text-align:left;font-weight:700;overflow:auto;white-space:pre-wrap}",
     map: undefined,
     media: undefined
@@ -367,7 +392,7 @@ var __vue_inject_styles__$1 = function __vue_inject_styles__(inject) {
 var __vue_scope_id__$1 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$1 = "data-v-2df59276";
+var __vue_module_identifier__$1 = "data-v-5afa8318";
 /* functional template */
 
 var __vue_is_functional_template__$1 = false;

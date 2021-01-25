@@ -1,6 +1,6 @@
 {
   "name": "@indielayer/vue-live-demo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A component for live editing Vue single file components in the browser with real time preview.",
   "keywords": [
     "vue",
@@ -27,23 +27,26 @@
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
     "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
-    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
+    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
+    "lint": "eslint --cache --cache-location=.cache/eslint --ignore-path .eslintignore --ext .js,.jsx,.ts,.tsx,.mjs,.vue --report-unused-disable-directives ."
   },
   "dependencies": {
     "@emmetio/codemirror-plugin": "^1.1.2",
-    "vue-template-compiler": "^2.6.11",
+    "codemirror": "^5.54.0",
     "lodash": "^4.17.15",
-    "codemirror": "^5.54.0"
+    "vue-template-compiler": "^2.6.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@indielayer/eslint-config-vue": "^1.0.0",
     "@rollup/plugin-alias": "^2.2.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-replace": "^2.3.2",
     "@vue/cli-plugin-babel": "^4.3.1",
     "@vue/cli-service": "^4.3.1",
     "cross-env": "^7.0.2",
+    "eslint": "^7.18.0",
     "minimist": "^1.2.5",
     "raw-loader": "^4.0.1",
     "rollup": "^2.7.3",

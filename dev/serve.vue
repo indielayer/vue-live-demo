@@ -1,6 +1,6 @@
 <script>
-import Vue from 'vue';
-import VueLiveDemo from '@/VueLiveDemo.vue';
+import Vue from 'vue'
+import VueLiveDemo from '@/VueLiveDemo.vue'
 import DemoSnippet from '!!raw-loader!./demo.vue'
 
 export default Vue.extend({
@@ -14,7 +14,7 @@ export default Vue.extend({
       showCode: true
     }
   }
-});
+})
 </script>
 
 <template>
@@ -23,7 +23,6 @@ export default Vue.extend({
       <h1>Vue Live Demo</h1>
       <p>A component for live editing Vue single file components in the browser with real time preview.</p>
       <a href="https://github.com/indielayer/vue-live-demo">https://github.com/indielayer/vue-live-demo</a>
-      
 
       <vue-live-demo class="demo" :code="code" :show-code="showCode" />
     </div>

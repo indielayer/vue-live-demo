@@ -3,8 +3,8 @@
   <component
     :is="previewedComponent"
     v-else-if="previewedComponent"
-    :id="scope"
     :key="iteration"
+    :class="scope"
   />
 </template>
 
@@ -50,6 +50,11 @@ export default {
         return v.toString(16)
       })
     },
+    scopeStyle (style) {
+      return style.trim().replace(/(^|\})\s*([^{]+)/g, (m, g1, g2) => {
+        return g1 ? `${g1} .${this.scope} ${g2}` : `.${this.scope} ${g2}`
+      })
+    },
     handleError(e) {
       this.error = e.message
     },
@@ -64,15 +69,38 @@ export default {
         }
 
         if (parsed.script) {
+          let { content } = parsed.script
+
+          // ignore all imports
+          content = content.replace(/^import.*$/m, '')
+
+          // ignore components property
+          content = content.replace(/components:[\s\S]*?\},/, '')
+
           // eslint-disable-next-line no-eval
-          const componentScript = eval(`(function() { ${parsed.script.content.replace('export default', 'return')} })`)
+          const componentScript = eval(`(function() { ${content.replace('export default', 'return')} })`)
           // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
+
           const componentProperties = componentScript()
 
           // check data() for return object
           if (componentProperties && componentProperties.data && typeof componentProperties.data() !== 'object') componentProperties.data = undefined
 
           appComponent = Object.assign({ template: parsed.template.content }, componentProperties)
+        }
+
+        if (parsed.styles && parsed.styles.length > 0) {
+          const styles = parsed.styles.map((s) => s.content).join(' ')
+
+          if (!this.elStyle) {
+            const head = document.head || document.getElementsByTagName('head')[0]
+
+            this.elStyle = document.createElement('style')
+            this.elStyle.type = 'text/css'
+            head.appendChild(this.elStyle)
+          }
+
+          this.elStyle.innerHTML = this.scopeStyle(styles)
         }
 
         const { render, staticRenderFns } = compile(appComponent.template)

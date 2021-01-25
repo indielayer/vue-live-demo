@@ -308,6 +308,12 @@ var script$1 = {
       });
     },
 
+    scopeStyle(style) {
+      return style.trim().replace(/(^|\})\s*([^{]+)/g, (m, g1, g2) => {
+        return g1 ? `${g1} .${this.scope} ${g2}` : `.${this.scope} ${g2}`;
+      });
+    },
+
     handleError(e) {
       this.error = e.message;
     },
@@ -322,8 +328,15 @@ var script$1 = {
         };
 
         if (parsed.script) {
-          // eslint-disable-next-line no-eval
-          const componentScript = eval(`(function() { ${parsed.script.content.replace('export default', 'return')} })`); // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
+          let {
+            content
+          } = parsed.script; // ignore all imports
+
+          content = content.replace(/^import.*$/m, ''); // ignore components property
+
+          content = content.replace(/components:[\s\S]*?\},/, ''); // eslint-disable-next-line no-eval
+
+          const componentScript = eval(`(function() { ${content.replace('export default', 'return')} })`); // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
 
           const componentProperties = componentScript(); // check data() for return object
 
@@ -331,6 +344,19 @@ var script$1 = {
           appComponent = Object.assign({
             template: parsed.template.content
           }, componentProperties);
+        }
+
+        if (parsed.styles && parsed.styles.length > 0) {
+          const styles = parsed.styles.map(s => s.content).join(' ');
+
+          if (!this.elStyle) {
+            const head = document.head || document.getElementsByTagName('head')[0];
+            this.elStyle = document.createElement('style');
+            this.elStyle.type = 'text/css';
+            head.appendChild(this.elStyle);
+          }
+
+          this.elStyle.innerHTML = this.scopeStyle(styles);
         }
 
         const {
@@ -378,9 +404,7 @@ var __vue_render__$1 = function () {
   }, [_vm._v(_vm._s(_vm.error))]) : _vm.previewedComponent ? _c(_vm.previewedComponent, {
     key: _vm.iteration,
     tag: "component",
-    attrs: {
-      "id": _vm.scope
-    }
+    class: _vm.scope
   }) : _vm._e();
 };
 
@@ -389,7 +413,7 @@ var __vue_staticRenderFns__$1 = [];
 
 const __vue_inject_styles__$1 = function (inject) {
   if (!inject) return;
-  inject("data-v-2df59276_0", {
+  inject("data-v-5afa8318_0", {
     source: ".src-error-fOY1{font-family:Consolas,Monaco,\"Andale Mono\",\"Ubuntu Mono\",monospace;font-size:.875rem;color:red;text-align:left;font-weight:700;overflow:auto;white-space:pre-wrap}",
     map: undefined,
     media: undefined

@@ -18,3 +18,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  ul {
+    list-style: square;
+  }
+
+  ul li {
+    font-weight: bold;
+  }
+</style>

@@ -68,7 +68,6 @@ export default {
 
 ### Missing features - TODO
 
-- accept `style` blocks and inject them into the HTML
 - `import` other scripts in the Single File Component
 
 
