@@ -75,7 +75,7 @@ export default {
           content = content.replace(/^import.*$/m, '')
 
           // ignore components property
-          content = content.replace(/components:[\s\S]*?\},/, '')
+          content = content.replace(/components:\s?{[\s\S]*?},?/, '')
 
           // eslint-disable-next-line no-eval
           const componentScript = eval(`(function() { ${content.replace('export default', 'return')} })`)
