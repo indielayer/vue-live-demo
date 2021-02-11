@@ -334,7 +334,7 @@ var script$1 = {
 
           content = content.replace(/^import.*$/m, ''); // ignore components property
 
-          content = content.replace(/components:[\s\S]*?\},/, ''); // eslint-disable-next-line no-eval
+          content = content.replace(/components:\s?{[\s\S]*?},?/, ''); // eslint-disable-next-line no-eval
 
           const componentScript = eval(`(function() { ${content.replace('export default', 'return')} })`); // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
 
@@ -413,7 +413,7 @@ var __vue_staticRenderFns__$1 = [];
 
 const __vue_inject_styles__$1 = function (inject) {
   if (!inject) return;
-  inject("data-v-5afa8318_0", {
+  inject("data-v-602b2eea_0", {
     source: ".src-error-fOY1{font-family:Consolas,Monaco,\"Andale Mono\",\"Ubuntu Mono\",monospace;font-size:.875rem;color:red;text-align:left;font-weight:700;overflow:auto;white-space:pre-wrap}",
     map: undefined,
     media: undefined

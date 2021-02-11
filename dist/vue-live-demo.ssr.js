@@ -295,7 +295,7 @@ var __vue_component__ = /*#__PURE__*/normalizeComponent({
 
           content = content.replace(/^import.*$/m, ''); // ignore components property
 
-          content = content.replace(/components:[\s\S]*?\},/, ''); // eslint-disable-next-line no-eval
+          content = content.replace(/components:\s?{[\s\S]*?},?/, ''); // eslint-disable-next-line no-eval
 
           var componentScript = eval("(function() { ".concat(content.replace('export default', 'return'), " })")); // const componentScript = new Function(parsed.script.content.replace('export default', 'return'))
 
@@ -375,7 +375,7 @@ var __vue_staticRenderFns__$1 = [];
 
 var __vue_inject_styles__$1 = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-5afa8318_0", {
+  inject("data-v-602b2eea_0", {
     source: ".src-error-fOY1{font-family:Consolas,Monaco,\"Andale Mono\",\"Ubuntu Mono\",monospace;font-size:.875rem;color:red;text-align:left;font-weight:700;overflow:auto;white-space:pre-wrap}",
     map: undefined,
     media: undefined
@@ -392,7 +392,7 @@ var __vue_inject_styles__$1 = function __vue_inject_styles__(inject) {
 var __vue_scope_id__$1 = undefined;
 /* module identifier */
 
-var __vue_module_identifier__$1 = "data-v-5afa8318";
+var __vue_module_identifier__$1 = "data-v-602b2eea";
 /* functional template */
 
 var __vue_is_functional_template__$1 = false;
