@@ -1,6 +1,6 @@
 {
   "name": "@indielayer/vue-live-demo",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A component for live editing Vue single file components in the browser with real time preview.",
   "keywords": [
     "vue",
